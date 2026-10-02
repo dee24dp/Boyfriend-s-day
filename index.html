@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Boyfriend's Day 💙</title>
+<style>
+:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg1:#000;--bg2:#000;--ink:#ffeaf2;--card:rgba(255,255,255,.08);--accent:#ff6b9d}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%;background:#000}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:linear-gradient(160deg,var(--bg1),var(--bg2)) fixed;color:var(--ink);font-family:Georgia,'Times New Roman',serif;text-align:center;overflow-x:hidden}
+section{max-width:560px;margin:0 auto;padding:40px 20px}
+h1{font-size:clamp(28px,8vw,44px);margin:.2em 0;color:var(--accent)}
+h2{font-size:22px;margin:0 0 16px}
+button{font:inherit;cursor:pointer;border:0;border-radius:999px;padding:12px 26px;background:var(--accent);color:#fff;font-size:18px;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:transform .15s}
+button:active{transform:scale(.95)}
+#gate{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+#envico{font-size:96px;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-4deg)}}
+#main{display:none}
+#note{background:var(--card);border-radius:18px;padding:22px;line-height:1.7;font-size:18px;min-height:120px;text-align:left;white-space:pre-wrap;backdrop-filter:blur(6px)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:var(--card);color:var(--ink);border-radius:16px;min-height:96px;padding:14px;font-size:16px;box-shadow:none;border:2px dashed var(--accent)}
+.card.on{border-style:solid}
+#ans{position:relative;height:130px;margin-top:10px}
+#ans button{position:absolute;top:30px}
+#yes{left:calc(50% - 90px)}#no{left:calc(50% + 10px);background:#888}
+#final{display:none;font-size:22px;margin-top:10px}
+.f{position:fixed;pointer-events:none;z-index:9;animation:up linear forwards}
+@keyframes up{to{transform:translateY(-110vh) rotate(30deg);opacity:0}}
+.c{position:fixed;top:-20px;pointer-events:none;z-index:10;animation:dn linear forwards}
+@keyframes dn{to{transform:translateY(112vh) rotate(540deg)}}
+.tl button{display:block;width:100%;text-align:left;background:var(--card);color:var(--ink);border-radius:14px;margin:0 0 10px;padding:14px 16px;font-size:16px;box-shadow:none;border-left:5px solid var(--accent)}
+.tl small{color:var(--accent);display:block}
+.tl p{margin:8px 0 0;display:none;line-height:1.5}
+.tl .open p{display:block}
+.pol{background:var(--card);border-radius:10px;padding:12px 8px;opacity:0;transform:translateY(24px) rotate(-6deg);transition:all .7s}
+.pol.in{opacity:1;transform:rotate(var(--r,2deg))}
+.pol div{font-size:48px}.pol span{font-size:14px}
+.pol img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;display:block}
+#disc{font-size:64px;display:inline-block}
+.spin{animation:sp 3s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+#gift{font-size:84px;background:none;box-shadow:none;padding:0}
+.shake{animation:sh .5s}@keyframes sh{25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}}
+.box{background:var(--card);border-radius:18px;padding:20px;line-height:1.7;text-align:left;white-space:pre-wrap;margin-top:14px;display:none}
+.opt{display:block;width:100%;margin:8px 0;background:var(--card);color:var(--ink);box-shadow:none;border:2px solid var(--accent)}
+/* 💖 memory photo viewer: pink & red frames + floating hearts */
+.mo{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 50% 30%,#5a1230,#1e0610 75%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:calc(env(safe-area-inset-top,0px) + 16px) 14px calc(env(safe-area-inset-bottom,0px) + 16px);cursor:pointer;overflow:hidden;animation:moIn .35s ease}
+@keyframes moIn{from{opacity:0}}
+.mo-cap{position:relative;z-index:2;color:#ffd1e0;font-size:16px;text-shadow:0 0 12px #ff3d7f}
+.mo-w{position:relative;z-index:2;display:flex;gap:18px;width:100%;justify-content:center;align-items:center}
+.mo-fr{position:relative;flex:0 1 auto;min-width:0;max-width:100%;padding:10px;border-radius:20px;background:linear-gradient(135deg,#ff9ec4,#ff2e63 35%,#c1121f 70%,#ff7aa8);box-shadow:0 0 0 2px rgba(255,255,255,.35),0 0 28px rgba(255,61,127,.7),0 10px 30px rgba(0,0,0,.55);animation:moPop .55s cubic-bezier(.2,1.4,.4,1) both,moGlow 2.4s ease-in-out infinite .6s}
+.mo-fr.two{flex:1 1 0}
+.mo-fr:nth-child(2){animation-delay:.12s,.7s}
+.mo-fr::before,.mo-fr::after{position:absolute;font-size:28px;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.mo-fr::before{content:"💖";top:-14px;left:-10px;transform:rotate(-15deg)}
+.mo-fr::after{content:"❤️";bottom:-14px;right:-10px;transform:rotate(15deg)}
+.mo-in{background:#fff5f8;padding:6px;border-radius:13px;display:flex;justify-content:center}
+.mo-in img{display:block;max-width:100%;max-height:68vh;object-fit:contain;border-radius:8px}
+@keyframes moPop{from{opacity:0;transform:scale(.7) rotate(-6deg)}}
+@keyframes moGlow{50%{box-shadow:0 0 0 2px rgba(255,255,255,.5),0 0 44px rgba(255,61,127,.95),0 10px 30px rgba(0,0,0,.55)}}
+.mh{position:absolute;bottom:-50px;pointer-events:none;animation:mhUp linear forwards}
+@keyframes mhUp{50%{transform:translate(18px,-55vh) rotate(14deg)}to{transform:translate(-14px,-115vh) rotate(-18deg);opacity:0}}
+.pw{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;animation:moIn .25s ease}
+.pw-box{width:100%;max-width:340px;background:linear-gradient(160deg,#2a1020,#12060d);border:2px solid var(--accent);border-radius:22px;padding:26px 22px;text-align:center;box-shadow:0 0 30px rgba(255,61,127,.45);animation:moPop .45s cubic-bezier(.2,1.4,.4,1) both}
+.pw-box h3{margin:0 0 6px;color:var(--accent);font-size:22px}
+.pw-box p{margin:0 0 16px;opacity:.85}
+.pw-box input{width:100%;padding:12px 16px;border-radius:999px;border:2px solid var(--accent);background:rgba(255,255,255,.08);color:var(--ink);font:inherit;font-size:20px;text-align:center;letter-spacing:6px;outline:none}
+.pw-err{color:#ff8fab;min-height:22px;margin:10px 0 4px;font-size:15px}
+.pw-btns{display:flex;gap:10px;justify-content:center}
+.pw-btns .x{background:#555}
+.pw-shake{animation:pwShake .4s}
+@keyframes pwShake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+#seekwrap{display:flex;align-items:center;gap:10px;max-width:380px;margin:18px auto 22px;font-size:14px;color:var(--ink)}
+#seekwrap span{min-width:38px;font-variant-numeric:tabular-nums;opacity:.85}
+#seek{--pct:0%;flex:1;-webkit-appearance:none;appearance:none;height:6px;border-radius:999px;outline:none;cursor:pointer;background:linear-gradient(to right,var(--accent) var(--pct),rgba(255,255,255,.2) var(--pct))}
+#seek::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--accent);box-shadow:0 0 10px rgba(255,61,127,.8)}
+#seek::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--accent);box-shadow:0 0 10px rgba(255,61,127,.8)}
+#seek::-moz-range-track{background:transparent}
+</style></head>
+<body>
+<section id="gate">
+  <div id="envico">💌</div>
+  <h1 style="font-size:clamp(24px,7vw,36px)">Hey love… I made something for you ❤️</h1>
+  <button id="env">Open your surprise</button>
+</section>
+
+<div id="main">
+<section>
+  <div style="font-size:54px">💙</div>
+  <h1 id="title"></h1>
+  <p id="sub" style="opacity:.8">Happy Boyfriend's Day</p>
+  <div id="note"></div>
+</section>
+
+<section><h2>Our memories 📸</h2><div class="grid" id="gal"></div></section>
+<section>
+  <h2>Reasons I adore you ✨</h2>
+  <p style="opacity:.7;margin-top:-8px">tap each card</p>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section><h2>🎵 <span id="songname"></span></h2><div id="disc">💿</div>
+  <div id="seekwrap"><span id="tcur">0:00</span><input type="range" id="seek" min="0" max="100" step="0.1" value="0" aria-label="Seek song"><span id="tdur">0:00</span></div>
+  <button id="play">▶ Play</button></section>
+<section><h2>A little surprise 🎁</h2><button id="gift" aria-label="Open gift">🎁</button><div class="box" id="giftmsg"></div></section>
+<section><h2>If I could tell you one thing… 💬</h2><button id="lbtn">Read my letter 💌</button><div class="box" id="letter"></div></section>
+<section><h2>How well do you know us? 🫶</h2><div class="box" id="quiz" style="display:block;text-align:center"></div></section>
+<section>
+  <h2 id="q"></h2>
+  <div id="ans"><button id="yes">Yes! 💖</button><button id="no">No</button></div>
+  <div id="final"></div>
+</section>
+<section id="fin" style="min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+  <div style="font-size:64px">🌙</div>
+  <h1>Happy Boyfriend's Day, my love ❤️</h1>
+  <p>Thank you for being you.</p>
+  <button id="more">Shower you with all my love 💙</button>
+</section>
+</div>
+
+<script>
+/* ✏️ EDIT THESE ✏️ */
+const NAME = "Baby";
+const FROM = "Your Girlfriend";
+const MESSAGE = `Hi ${NAME},
+
+I just wanted to take a moment to tell you how much you mean to me.
+
+I know I can be moody at times, and I know I’m not always the easiest person to deal with — but I really, really love you. Thank you for putting up with me, for being patient with me, and for choosing to stay even when I’m being difficult. I know it’s not for the weak. 😭❤️
+
+I’m so, so glad that we met. And honestly, if I had to go through every painful part of my life all over again, I would — if it meant that, at the end of that tunnel, I would still find you.
+
+You are the best thing that happened to me, and I hope you know how much you are loved.
+
+Happy Boyfriend’s Day, Love ❤️
+
+— your lover`;
+const REASONS = [
+  "Your smile… damn, I fell HARD for that 😭❤️",
+  "The way you listen to me, even when I’m saying absolute bullshit 🥹",
+  "The kisses… and beyond that, let’s just say you’re suspiciously good at them 👀💋",
+  "You’re basically my soul twin 🫶",
+  "The best company I could ever ask for ❤️",
+  "Come on, hands down my BEST drinking partner 🍻😂"
+];
+const QUESTION = "Will you be my boyfriend forever?";
+const YES_TEXT = "Yay!! I love you so much! 🥰💙";
+
+const $ = id => document.getElementById(id);
+const nameParam = new URLSearchParams(location.search).get("name");
+const who = nameParam || NAME;
+$("title").textContent = "Happy Boyfriend's Day, " + who + "!";
+$("q").textContent = QUESTION;
+
+function floatHeart(){
+  const e = document.createElement("div");
+  e.className = "f";
+  e.textContent = ["💙","💖","💕","✨"][Math.floor(Math.random()*4)];
+  e.style.left = Math.random()*100 + "vw";
+  e.style.bottom = "-30px";
+  e.style.fontSize = 16 + Math.random()*22 + "px";
+  e.style.animationDuration = 5 + Math.random()*5 + "s";
+  document.body.appendChild(e);
+  setTimeout(() => e.remove(), 10500);
+}
+function confetti(){
+  for(let i=0;i<60;i++){
+    const e = document.createElement("div");
+    e.className = "c";
+    e.textContent = ["🎉","💙","💖","✨","🎊"][i%5];
+    e.style.left = Math.random()*100 + "vw";
+    e.style.fontSize = 18 + Math.random()*18 + "px";
+    e.style.animationDuration = 2.5 + Math.random()*3 + "s";
+    e.style.animationDelay = Math.random()*1.2 + "s";
+    document.body.appendChild(e);
+    setTimeout(() => e.remove(), 7500);
+  }
+}
+function typeText(el, text){
+  let i = 0;
+  (function step(){ el.textContent = text.slice(0, i += 3); if(i < text.length) setTimeout(step, 35); })();
+}
+
+$("env").onclick = () => {
+  $("gate").style.display = "none";
+  $("main").style.display = "block";
+  window.scrollTo(0,0);
+  confetti();
+  setInterval(floatHeart, 600);
+  typeText($("note"), MESSAGE);
+};
+
+REASONS.forEach((r, n) => {
+  const b = document.createElement("button");
+  b.className = "card";
+  b.textContent = "💌 #" + (n+1);
+  b.onclick = () => { b.textContent = r; b.classList.add("on"); };
+  $("grid").appendChild(b);
+});
+
+const no = $("no");
+function dodge(e){
+  e.preventDefault();
+  const box = $("ans").getBoundingClientRect();
+  no.style.left = Math.random()*(box.width - 90) + "px";
+  no.style.top = Math.random()*(box.height - 50) + "px";
+}
+no.addEventListener("mouseover", dodge);
+no.addEventListener("touchstart", dodge, {passive:false});
+no.addEventListener("click", dodge);
+
+$("yes").onclick = () => {
+  $("ans").style.display = "none";
+  $("final").style.display = "block";
+  $("final").textContent = YES_TEXT;
+  confetti();
+  for(let i=0;i<15;i++) setTimeout(floatHeart, i*120);
+};
+/* ✏️ EDIT THESE TOO ✏️ */
+const MEMORIES=[["📷","First photo","photos/first-photo.jpeg"],["🍹","First drink","photos/first-drink.jpeg"],["✈️","First trip","photos/first-trip.jpeg"],["🎬","First movie","photos/first-movie.jpeg"],["📸","First photobooth","photos/first-photobooth.jpeg"],["✨","Random moments",["photos/random-1.jpeg","photos/random-2.jpeg"]]];
+const SONG="Our Song";
+const SONG_PLAYING="Rang Jo Lagyo";
+const GIFT_MSG="You are my favourite person, my best friend and my happiest place. 💙\n\nI love you more than words can say.";
+const LETTER=`My Love,
+
+I don't really know how to put everything I feel for you into words, but I'll try.
+
+Right now you're 1754 km away from me and honestly, I miss you so much. I miss having you around, looking at you, listening to you talk, annoying you, and just being with you. But I'm also so so excited because in just a few days, I will get to see you again. I genuinely can't wait. ❤️
+
+Sometimes I think about how you could've chosen someone who was right there with you, someone you could see whenever you wanted, and yet you still choose me. You still choose us, even with all this distance. And that means more to me than I can explain.
+
+I know I'm moody, I overthink, I get sad over stupid things and I'm definitely not always easy to deal with 😭 but thank you for still choosing me and putting up with me. I promise I've got your back too. No matter how much you overthink, no matter how messy things get, I'll be there. You don't have to figure everything out alone.
+
+And honestly, it's the tiniest things about you that make me miss you the most. The way you run your hand through your hair, your eyes, your smile, the way you look at me, the way you listen to me even when I'm talking absolute nonsense. Somehow, every little thing about you has become something I miss.
+
+It's crazy how you became such a huge part of my life without me even realising it. You became my person. My favourite person to talk to, annoy, drink with, and just sit beside doing absolutely nothing.
+
+And somewhere along the way, you became home to me. I don't know exactly what the future looks like for us, but I know I want to figure it out with you. Because if I've learnt anything from us, it's that the distance doesn't make me want you any less. If anything, it makes me realise just how much of my life has you in it.
+
+I love you, Baby. Now hurry up because I really, really want to see you. ❤️
+
+Happy Boyfriend's Day, my love. 🫶
+
+Your lover ❤️`;
+const QUIZ=[["When did we first meet?",["5th January 2026","6th January 2026","4th January 2026","8th January 2026"],1],["When was our first kiss?",["4th April","6th May","3rd April","10th June"],2],["Who said 'I love you' first?",["Me","You"],1]];
+
+$("songname").textContent=SONG;
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.3});
+MEMORIES.forEach((m,i)=>{const d=document.createElement("div");d.className="pol";d.style.setProperty("--r",(i%2?3:-3)+"deg");const e=document.createElement("div");e.textContent=m[0];if(m[2]){const L=[].concat(m[2]);d.style.cursor="pointer";d.onclick=()=>openBox(L,m[1])}const s=document.createElement("span");s.textContent=m[1];d.append(e,s);$("gal").appendChild(d);io.observe(d)});
+function openBox(L,cap){
+  const o=document.createElement("div");o.className="mo";
+  const t=document.createElement("div");t.className="mo-cap";t.textContent=cap+" 💕";
+  const w=document.createElement("div");w.className="mo-w";
+  L.forEach(u=>{
+    const f=document.createElement("div");f.className="mo-fr"+(L.length>1?" two":"");
+    const n=document.createElement("div");n.className="mo-in";
+    const i=document.createElement("img");i.src=u;
+    n.appendChild(i);f.appendChild(n);w.appendChild(f);
+  });
+  o.append(t,w);
+  const H=["❤️","💖","💕","🩷","💗","♥️"];
+  function heart(){
+    const e=document.createElement("div");e.className="mh";
+    e.textContent=H[Math.floor(Math.random()*H.length)];
+    e.style.left=Math.random()*100+"%";
+    e.style.fontSize=16+Math.random()*26+"px";
+    e.style.animationDuration=5+Math.random()*4+"s";
+    e.style.zIndex=Math.random()<.7?1:3;
+    o.appendChild(e);
+    setTimeout(()=>e.remove(),9500);
+  }
+  for(let k=0;k<14;k++)setTimeout(heart,k*140);
+  const iv=setInterval(heart,350);
+  o.onclick=()=>{clearInterval(iv);o.remove()};
+  document.body.appendChild(o);
+}
+let ac,playing=false,timer,ni=0;
+const MEL=[261.6,329.6,392,523.3,392,329.6,293.7,349.2,440,587.3,440,349.2];
+function tick(){const o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type="sine";o.frequency.value=MEL[ni++%MEL.length];g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.2,t+.05);g.gain.exponentialRampToValueAtTime(.0001,t+.9);o.connect(g);g.connect(ac.destination);o.start();o.stop(t+1)}
+const SONG_FILE="song.mp3";const song=SONG_FILE?new Audio(SONG_FILE):null;if(song)song.loop=true;
+$("play").onclick=()=>{
+  if(song){
+    if(song.paused){song.play();playing=true}else{song.pause();playing=false}
+  }else{
+    if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();
+    if(ac.resume)ac.resume();
+    if(playing){clearInterval(timer);playing=false}else{tick();timer=setInterval(tick,600);playing=true}
+  }
+  $("play").textContent=playing?"⏸ Pause":"▶ Play";
+  $("disc").classList.toggle("spin",playing);
+  $("songname").textContent=playing?SONG_PLAYING:SONG;
+};
+
+/* seek bar */
+if(song){
+  song.preload="metadata";
+  const sk=$("seek");
+  const fmt=t=>{if(!isFinite(t))return"0:00";const m=Math.floor(t/60),r=Math.floor(t%60);return m+":"+String(r).padStart(2,"0")};
+  const paint=()=>{
+    const d=song.duration||0;
+    sk.value=d?song.currentTime/d*100:0;
+    sk.style.setProperty("--pct",sk.value+"%");
+    $("tcur").textContent=fmt(song.currentTime);
+    $("tdur").textContent=fmt(d);
+  };
+  song.addEventListener("timeupdate",paint);
+  song.addEventListener("loadedmetadata",paint);
+  sk.addEventListener("input",()=>{
+    if(song.duration)song.currentTime=sk.value/100*song.duration;
+    paint();
+  });
+}else{$("seekwrap").style.display="none"}
+
+$("gift").onclick=()=>{
+  const g=$("gift");g.classList.add("shake");
+  setTimeout(()=>{g.style.display="none";const m=$("giftmsg");m.style.display="block";m.textContent=GIFT_MSG;confetti()},500);
+};
+
+const PASSWORD="6126";
+function unlock(){
+  $("lbtn").style.display="none";const l=$("letter");l.style.display="block";typeText(l,LETTER);
+}
+$("lbtn").onclick=()=>{
+  const o=document.createElement("div");o.className="pw";
+  o.innerHTML='<div class="pw-box"><h3>This letter is locked 🔒</h3><p>Enter the password, love 💕</p><input type="password" autocomplete="off"><div class="pw-err"></div><div class="pw-btns"><button class="ok">Unlock 💖</button><button class="x">Cancel</button></div></div>';
+  document.body.appendChild(o);
+  const inp=o.querySelector("input"),err=o.querySelector(".pw-err"),box=o.querySelector(".pw-box");
+  inp.focus();
+  const close=()=>o.remove();
+  const tryIt=()=>{
+    if(inp.value.trim()===PASSWORD){close();unlock()}
+    else{err.textContent="Wrong password 🙈 Try again!";inp.value="";box.classList.remove("pw-shake");void box.offsetWidth;box.classList.add("pw-shake");inp.focus()}
+  };
+  o.querySelector(".ok").onclick=tryIt;
+  o.querySelector(".x").onclick=close;
+  inp.addEventListener("keydown",e=>{if(e.key==="Enter")tryIt()});
+  o.addEventListener("click",e=>{if(e.target===o)close()});
+};
+
+let qi=0,sc=0;
+function showQ(){
+  const q=QUIZ[qi],b=$("quiz");
+  if(!q){b.innerHTML="";const h=document.createElement("h3");h.textContent="You got "+sc+"/"+QUIZ.length+" 🎉";const p=document.createElement("p");p.textContent=sc===QUIZ.length?"Perfect! You really know us 💙":"Close enough — I love you anyway 😘";b.append(h,p);if(sc===QUIZ.length)confetti();return}
+  b.innerHTML="";const t=document.createElement("p");t.innerHTML="<b></b>";t.firstChild.textContent=q[0];b.appendChild(t);
+  q[1].forEach((o,i)=>{const x=document.createElement("button");x.className="opt";x.textContent=o;x.onclick=()=>{if(i===q[2]){sc++;x.textContent+=" ✅"}else x.textContent+=" ❌";setTimeout(()=>{qi++;showQ()},700)};b.appendChild(x)});
+}
+showQ();
+
+let done=false;
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!done){done=true;confetti()}}),{threshold:.6}).observe($("fin"));
+$("more").onclick=()=>{confetti();for(let i=0;i<20;i++)setTimeout(floatHeart,i*100)};
+</script>
+</body></html>
